@@ -46,8 +46,10 @@ class ApiCustomLogCreator extends ApiBase {
 		$this->getResult()->addValue(null, $this->getModuleName(), $ret);
 	}
 	
+	const CUSTOM_PARAM_PREFIX = 'custom';
+	
 	private static function getApiParamFromIndex($i) {
-		$index = "custom-param-" . strval($i);
+		$index = self::CUSTOM_PARAM_PREFIX . '-' . strval($i + 1);
 		return $index;
 	}
 	
@@ -88,8 +90,11 @@ class ApiCustomLogCreator extends ApiBase {
 		];
 		
 		for ($i = 0; $i < $wgCustomLogsMax; $i++) {
-			$paramList[self::getApiParamFromIndex($i)] = [
-				ApiBase::PARAM_HELP_MSG => 'apihelp-CustomLogs-param-custom-param'
+			$paramName = self::getApiParamFromIndex($i);
+			$helpPrefix = 'apihelp-CustomLogs-param-';
+			$message = wfMessageFallback($helpPrefix . $paramName, $helpPrefix . self::CUSTOM_PARAM_PREFIX);
+			$paramList[$paramName] = [
+				ApiBase::PARAM_HELP_MSG => $message
 			];
 		}
 		
