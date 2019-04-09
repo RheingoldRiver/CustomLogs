@@ -5,6 +5,5 @@
 		]
 	},
 	"customlogs-desc": "This lets you make custom logs",
-	"customlogs-nomessage": "Custom log %NAME% from page 3 logged by $1. (no log-specific message found.)",
-	"apihelp-CustomLogs-summary": "Custom logs api action"
+	"customlogs-nomessage": "Custom log %NAME% from page $3 logged by $1. (no log-specific message found.)"
 }

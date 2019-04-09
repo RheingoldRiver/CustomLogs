@@ -1,4 +1,4 @@
 {
 	"customlogs-desc": "A message saying this makes custom logs",
-	"customlogs-nomessage": "test"
+	"customlogs-nomessage": "A default message to print as the log entry when no message is provided by the user for that log type. %NAME% will be replaced with the name of the log by the extension."
 }
