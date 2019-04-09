@@ -1,0 +1,47 @@
+{
+    "name" : "CustomLogs",
+    "version" : "0.1",
+    "author" : [
+        "Megan Cutrofello",
+        "Brian Wolff"
+    ],
+    "url" : "example.com",
+    
+    "MessagesDirs" : {
+        "CustomLogs" : [
+            "i18n",
+            "i18n/api"
+        ]
+    },
+    "ExtensionFunctions" : [
+        "CustomLogCreator::createLog"
+    ],
+    "config": {
+    	"CustomLogsMax": 3
+    },
+    "AutoloadClasses" : {
+        "CustomLogCreator" : "includes/CustomLogCreator.php",
+        "CustomLogFormatter" : "includes/CustomLogFormatter.php",
+        "ApiCustomLogCreator" : "includes/ApiCustomLogCreator.php"
+    },
+    "APIModules" : {
+        "CustomLogs" : "ApiCustomLogCreator"
+    },
+    "AvailableRights" : [
+        "writecustomlogs"
+    ],
+    "GroupPermissions" : {
+        "*" : {
+            "writecustomlogs" : true
+        }
+    },
+    "RateLimits": {
+        "writecustomlog": {
+            "&can-bypass": true,
+            "user": [
+                10,
+                60
+            ]
+        }
+    }
+}
