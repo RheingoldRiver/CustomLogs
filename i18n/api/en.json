@@ -4,5 +4,12 @@
 			"Megan Cutrofello"
 		]
 	},
-	"apihelp-CustomLogs-summary": "Custom logs api action"
+	"apihelp-customlogs-param-custom": "Custom parameter. Summary may be set by user.",
+	"apihelp-customlogs-summary": "Write custom logs.",
+	"apihelp-customlogs-param-publish": "Include this log entry in recent changes?",
+	"apihelp-customlogs-param-tags": "Change tags to apply to the log.",
+	"apihelp-customlogs-param-logtype": "Type of log.",
+	"apihelp-customlogs-param-title": "Title of the page to edit. Cannot be used together with ''pageid''.",
+	"apihelp-customlogs-param-pageid": "Page ID of the page to edit. Cannot be used together with ''title''.",
+	"apihelp-customlogs-param-summary": "Summary of log."
 }

@@ -5,7 +5,7 @@
         "Megan Cutrofello",
         "Brian Wolff"
     ],
-    "url" : "example.com",
+    "url" : "https://lol.gamepedia.com/User:RheingoldRiver/CustomLogs_Help",
     
     "MessagesDirs" : {
         "CustomLogs" : [
@@ -25,7 +25,7 @@
         "ApiCustomLogCreator" : "includes/ApiCustomLogCreator.php"
     },
     "APIModules" : {
-        "CustomLogs" : "ApiCustomLogCreator"
+        "customlogs" : "ApiCustomLogCreator"
     },
     "AvailableRights" : [
         "writecustomlogs"

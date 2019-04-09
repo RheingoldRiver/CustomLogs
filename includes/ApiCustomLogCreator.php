@@ -15,8 +15,8 @@ class ApiCustomLogCreator extends ApiBase {
 			$this->dieWithError('apierror-permissiondenied');
 		}
 		
-		$logType = $apiParams['logType'];
-		$logEntry = new ManualLogEntry($logType, $logType);
+		$logType = $apiParams['logtype'];
+		$logEntry = new ManualLogEntry('custom', $logType);
 		$logEntry->setTarget($this->getTitleFromTitleOrPageId($apiParams));
 		$logEntry->setComment($apiParams['summary']);
 		$logEntry->setPerformer($this->getUser());
@@ -39,13 +39,14 @@ class ApiCustomLogCreator extends ApiBase {
 			$logEntry -> publish($logId);
 		}
 		$ret = [
-			'logId' => $logId,
+			'logid' => $logId,
 			'result' => 'Success!',
 		];
 		ApiResult::setIndexedTagName($ret, 'result');
 		$this->getResult()->addValue(null, $this->getModuleName(), $ret);
 	}
 	
+	const API_HELP_PREFIX = 'apihelp-customlogs-param-';
 	const CUSTOM_PARAM_PREFIX = 'custom';
 	
 	private static function getApiParamFromIndex($i) {
@@ -72,7 +73,7 @@ class ApiCustomLogCreator extends ApiBase {
 		$logList = CustomLogCreator::getCustomLogList();
 		global $wgCustomLogsMax;
 		$paramList = [
-			'logType' => [
+			'logtype' => [
 				ApiBase::PARAM_TYPE => $logList,
 			],
 			'title' => null,
@@ -89,10 +90,12 @@ class ApiCustomLogCreator extends ApiBase {
 			]
 		];
 		
+		$fallbackKey = self::API_HELP_PREFIX . self::CUSTOM_PARAM_PREFIX;
+		
 		for ($i = 0; $i < $wgCustomLogsMax; $i++) {
 			$paramName = self::getApiParamFromIndex($i);
-			$helpPrefix = 'apihelp-CustomLogs-param-';
-			$message = wfMessageFallback($helpPrefix . $paramName, $helpPrefix . self::CUSTOM_PARAM_PREFIX);
+			$specificKey = self::API_HELP_PREFIX . $paramName;
+			$message = wfMessageFallback($specificKey, $fallbackKey);
 			$paramList[$paramName] = [
 				ApiBase::PARAM_HELP_MSG => $message
 			];
