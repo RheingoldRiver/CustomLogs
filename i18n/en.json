@@ -4,6 +4,6 @@
 			"Megan Cutrofello"
 		]
 	},
-	"customlogs-desc": "This lets you make custom logs",
+	"customlogs-desc": "Allows the creation & customization of log types via the MediaWiki namespace that can be written to by the API",
 	"customlogs-nomessage": "Custom log %NAME% from page $3 logged by $1. (no log-specific message found.)"
 }

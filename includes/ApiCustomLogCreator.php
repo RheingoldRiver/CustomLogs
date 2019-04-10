@@ -21,9 +21,9 @@ class ApiCustomLogCreator extends ApiBase {
 		$logEntry->setComment($apiParams['summary']);
 		$logEntry->setPerformer($this->getUser());
 		
-		global $wgCustomLogsMax;
+		global $wgCustomLogsMaxCustomParams;
 		$logParams = [];
-		for ($i = 0; $i < $wgCustomLogsMax; $i++) {
+		for ($i = 0; $i < $wgCustomLogsMaxCustomParams; $i++) {
 			$value = $apiParams[self::getApiParamFromIndex($i)];
 			$key = self::getMsgParamFromIndex($i);
 			$logParams[$key] = $value;
@@ -71,7 +71,7 @@ class ApiCustomLogCreator extends ApiBase {
 	
 	public function getAllowedParams() {
 		$logList = CustomLogCreator::getCustomLogList();
-		global $wgCustomLogsMax;
+		global $wgCustomLogsMaxCustomParams;
 		$paramList = [
 			'logtype' => [
 				ApiBase::PARAM_TYPE => $logList,
@@ -92,7 +92,7 @@ class ApiCustomLogCreator extends ApiBase {
 		
 		$fallbackKey = self::API_HELP_PREFIX . self::CUSTOM_PARAM_PREFIX;
 		
-		for ($i = 0; $i < $wgCustomLogsMax; $i++) {
+		for ($i = 0; $i < $wgCustomLogsMaxCustomParams; $i++) {
 			$paramName = self::getApiParamFromIndex($i);
 			$specificKey = self::API_HELP_PREFIX . $paramName;
 			$message = wfMessageFallback($specificKey, $fallbackKey);

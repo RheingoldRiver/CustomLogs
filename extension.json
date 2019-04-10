@@ -1,47 +1,48 @@
 {
-    "name" : "CustomLogs",
-    "version" : "0.1",
-    "author" : [
-        "Megan Cutrofello",
-        "Brian Wolff"
-    ],
-    "url" : "https://lol.gamepedia.com/User:RheingoldRiver/CustomLogs_Help",
-    "license-name": "GPL-2.0-or-later",
-    "MessagesDirs" : {
-        "CustomLogs" : [
-            "i18n",
-            "i18n/api"
-        ]
-    },
-    "ExtensionFunctions" : [
-        "CustomLogCreator::createLog"
-    ],
-    "config": {
-    	"CustomLogsMax": 3
-    },
-    "AutoloadClasses" : {
-        "CustomLogCreator" : "includes/CustomLogCreator.php",
-        "CustomLogFormatter" : "includes/CustomLogFormatter.php",
-        "ApiCustomLogCreator" : "includes/ApiCustomLogCreator.php"
-    },
-    "APIModules" : {
-        "customlogs" : "ApiCustomLogCreator"
-    },
-    "AvailableRights" : [
-        "writecustomlogs"
-    ],
-    "GroupPermissions" : {
-        "*" : {
-            "writecustomlogs" : true
-        }
-    },
-    "RateLimits": {
-        "writecustomlog": {
-            "&can-bypass": true,
-            "user": [
-                10,
-                60
-            ]
-        }
-    }
+	"name" : "CustomLogs",
+	"version" : "0.1",
+	"author" : [
+		"Megan Cutrofello",
+		"Brian Wolff"
+	],
+	"url" : "https://lol.gamepedia.com/User:RheingoldRiver/CustomLogs_Help",
+	"descriptionmsg": "customlogs-desc",
+	"license-name": "GPL-2.0-or-later",
+	"MessagesDirs" : {
+		"CustomLogs" : [
+			"i18n",
+			"i18n/api"
+		]
+	},
+	"ExtensionFunctions" : [
+		"CustomLogCreator::createLog"
+	],
+	"config": {
+		"CustomLogsMaxCustomParams": 3
+	},
+	"AutoloadClasses" : {
+		"CustomLogCreator" : "includes/CustomLogCreator.php",
+		"CustomLogFormatter" : "includes/CustomLogFormatter.php",
+		"ApiCustomLogCreator" : "includes/ApiCustomLogCreator.php"
+	},
+	"APIModules" : {
+		"customlogs" : "ApiCustomLogCreator"
+	},
+	"AvailableRights" : [
+		"writecustomlogs"
+	],
+	"GroupPermissions" : {
+		"*" : {
+			"writecustomlogs" : true
+		}
+	},
+	"RateLimits": {
+		"writecustomlog": {
+			"&can-bypass": true,
+			"user": [
+				10,
+				60
+			]
+		}
+	}
 }
