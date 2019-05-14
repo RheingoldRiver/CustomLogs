@@ -1,6 +1,6 @@
 <?php
 
-class ApiCustomLogCreator extends ApiBase {
+class ApiCustomLogWriter extends ApiBase {
 	public function execute() {
 		$apiParams = $this->extractRequestParams();
 		

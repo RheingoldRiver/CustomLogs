@@ -23,10 +23,10 @@
 	"AutoloadClasses" : {
 		"CustomLogCreator" : "includes/CustomLogCreator.php",
 		"CustomLogFormatter" : "includes/CustomLogFormatter.php",
-		"ApiCustomLogCreator" : "includes/ApiCustomLogCreator.php"
+		"ApiCustomLogWriter" : "includes/ApiCustomLogWriter.php"
 	},
 	"APIModules" : {
-		"customlogs" : "ApiCustomLogCreator"
+		"customlogswrite" : "ApiCustomLogWriter"
 	},
 	"AvailableRights" : [
 		"writecustomlogs"
