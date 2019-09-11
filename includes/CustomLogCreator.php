@@ -11,7 +11,7 @@ class CustomLogCreator {
 	}
 	
 	public static function getCustomLogList() {
-		$logMessageContent = wfMessage('customlogs')->plain();
-		return preg_split('/\s*,\s*/',$logMessageContent);
+		global $wgCustomLogsLogs;
+		return $wgCustomLogsLogs;
 	}
 }

@@ -18,6 +18,7 @@
 		"CustomLogCreator::createLog"
 	],
 	"config": {
+		"CustomLogsLogs": [],
 		"CustomLogsMaxCustomParams": 3
 	},
 	"AutoloadClasses" : {

@@ -1,6 +1,6 @@
 # Usage
 ## Creating Custom Logs
-* Create the page MediaWiki:Customlogs. It should be a comma-separated list of log names.
+* Set $wgCustomLogsLogs in localsettings as a list of log names/keys.
 * For this example we'll say you want to create a log named "kittens"
 * Create the page MediaWiki:Log-name-kittens with the name of the log, for example "Kitten Log"
 * Create the page MediaWiki:Logentry-custom-kittens with the display text for the log
