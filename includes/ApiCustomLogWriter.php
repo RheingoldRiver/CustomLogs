@@ -16,7 +16,7 @@ class ApiCustomLogWriter extends ApiBase {
 		}
 		
 		$logType = $apiParams['logtype'];
-		$logEntry = new ManualLogEntry('custom', $logType);
+		$logEntry = new ManualLogEntry($logType, $logType);
 		$logEntry->setTarget($this->getTitleFromTitleOrPageId($apiParams));
 		$logEntry->setComment($apiParams['summary']);
 		$logEntry->setPerformer($this->getUser());

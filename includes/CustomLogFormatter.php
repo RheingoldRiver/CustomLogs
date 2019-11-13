@@ -5,7 +5,7 @@ class CustomLogFormatter extends LogFormatter {
 		$message = $this->msg($this->getMessageKey());
 		if (! $message->exists()) {
 			$entry = $this->entry;
-			$logName = $entry->getSubtype();
+			$logName = $entry->getType();
 			$msgText = $this->msg('customlogs-nomessage')->plain();
 			$message = new RawMessage(str_replace('%NAME%',$logName,$msgText));
 		}
