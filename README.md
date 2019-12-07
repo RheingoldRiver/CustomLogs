@@ -3,7 +3,7 @@
 * Set $wgCustomLogsLogs in localsettings as a list of log names/keys.
 * For this example we'll say you want to create a log named "kittens"
 * Create the page MediaWiki:Log-name-kittens with the name of the log, for example "Kitten Log"
-* Create the page MediaWiki:Logentry-custom-kittens with the display text for the log
+* Create the page MediaWiki:Logentry-kittens-kittens with the display text for the log
     * You may specify parameters $1, $2, etc
     * $1 is User (with markup)
     * $2 is User
