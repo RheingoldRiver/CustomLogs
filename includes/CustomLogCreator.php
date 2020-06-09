@@ -5,7 +5,7 @@ class CustomLogCreator {
 		$logList = self::getCustomLogList();
 		global $wgLogTypes, $wgLogActionsHandlers;
 		$wgLogTypes = array_merge($wgLogTypes, $logList);
-		foreach ($wgLogTypes as $log) {
+		foreach ($logList as $log) {
 			$wgLogActionsHandlers[$log . '/*'] = CustomLogFormatter::class;
 		}
 	}
