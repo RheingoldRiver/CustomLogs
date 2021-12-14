@@ -12,7 +12,7 @@
 ## Writing Custom Logs
 * This can be done via the api action customlogswrite
 * Ability to write custom logs is governed by the right writecustomlogs, default available to anyone
-* For different logs, parameters custom-1, custom-2, etc may have different meanings, but this numbering system was chosen to avoid retaining deprecated API parameters for logs that are no longer in use
+* For different logs, parameters custom1, custom2, etc may have different meanings, but this numbering system was chosen to avoid retaining deprecated API parameters for logs that are no longer in use
 * Can decide to publish the log in recent changes or not
 
 # Development
