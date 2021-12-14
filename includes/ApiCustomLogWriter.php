@@ -50,7 +50,7 @@ class ApiCustomLogWriter extends ApiBase {
 	const CUSTOM_PARAM_PREFIX = 'custom';
 	
 	private static function getApiParamFromIndex($i) {
-		$index = self::CUSTOM_PARAM_PREFIX . '-' . strval($i + 1);
+		$index = self::CUSTOM_PARAM_PREFIX . strval($i + 1);
 		return $index;
 	}
 	

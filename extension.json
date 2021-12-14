@@ -1,11 +1,11 @@
 {
 	"name" : "CustomLogs",
-	"version" : "0.1",
+	"version" : "1.0.0",
 	"author" : [
 		"Megan Cutrofello",
 		"Brian Wolff"
 	],
-	"url" : "https://lol.gamepedia.com/User:RheingoldRiver/CustomLogs_Help",
+	"url" : "https://www.mediawiki.org/wiki/Extension:CustomLogs",
 	"descriptionmsg": "customlogs-desc",
 	"license-name": "GPL-2.0-or-later",
 	"MessagesDirs" : {
