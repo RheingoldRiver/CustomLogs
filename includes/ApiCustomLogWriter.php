@@ -1,9 +1,11 @@
 <?php
 
+use Wikimedia\ParamValidator\ParamValidator;
+
 class ApiCustomLogWriter extends ApiBase {
 	public function execute() {
 		$apiParams = $this->extractRequestParams();
-		
+
 		$user = $this->getUser();
 		if ($user->getBlock()) {
 			$this->dieBlocked( $user->getBlock() );
@@ -14,13 +16,13 @@ class ApiCustomLogWriter extends ApiBase {
 		if (! $user->isAllowed('writecustomlogs')) {
 			$this->dieWithError('apierror-permissiondenied');
 		}
-		
+
 		$logType = $apiParams['logtype'];
 		$logEntry = new ManualLogEntry($logType, $logType);
 		$logEntry->setTarget($this->getTitleFromTitleOrPageId($apiParams));
 		$logEntry->setComment($apiParams['summary']);
 		$logEntry->setPerformer($this->getUser());
-		
+
 		global $wgCustomLogsMaxCustomParams;
 		$logParams = [];
 		for ($i = 0; $i < $wgCustomLogsMaxCustomParams; $i++) {
@@ -28,13 +30,13 @@ class ApiCustomLogWriter extends ApiBase {
 			$key = self::getMsgParamFromIndex($i);
 			$logParams[$key] = $value;
 		}
-		
+
 		$logEntry->setParameters($logParams);
-		
-		$logEntry->setTags($apiParams['tags']);
-		
+
+		$logEntry->addTags($apiParams['tags']);
+
 		$logId = $logEntry->insert();
-		
+
 		if ($apiParams['publish']) {
 			$logEntry -> publish($logId);
 		}
@@ -45,53 +47,53 @@ class ApiCustomLogWriter extends ApiBase {
 		ApiResult::setIndexedTagName($ret, 'result');
 		$this->getResult()->addValue(null, $this->getModuleName(), $ret);
 	}
-	
+
 	const API_HELP_PREFIX = 'apihelp-customlogs-param-';
 	const CUSTOM_PARAM_PREFIX = 'custom';
-	
+
 	private static function getApiParamFromIndex($i) {
 		$index = self::CUSTOM_PARAM_PREFIX . strval($i + 1);
 		return $index;
 	}
-	
+
 	private static function getMsgParamFromIndex($i) {
 		$indexNumber = strval(4 + $i);
 		$indexName = self::getApiParamFromIndex($i);
 		$index = $indexNumber . "::" . $indexName;
 		return $index;
 	}
-	
+
 	public function mustBePosted() {
 		return true;
 	}
-	
+
 	public function isWriteMode() {
 		return true;
 	}
-	
+
 	public function getAllowedParams() {
 		$logList = CustomLogCreator::getCustomLogList();
 		global $wgCustomLogsMaxCustomParams;
 		$paramList = [
 			'logtype' => [
-				ApiBase::PARAM_TYPE => $logList,
+				ParamValidator::PARAM_TYPE => $logList,
 			],
 			'title' => null,
 			'pageid' => [
-				ApiBase::PARAM_TYPE => 'integer'
+				ParamValidator::PARAM_TYPE => 'integer'
 			],
 			'summary' => null,
 			'tags' => [
-				ApiBase::PARAM_TYPE => 'tags',
-				ApiBase::PARAM_ISMULTI => true,
+				ParamValidator::PARAM_TYPE => 'tags',
+				ParamValidator::PARAM_ISMULTI => true,
 			],
 			'publish' => [
-				ApiBase::PARAM_TYPE => 'boolean',
+				ParamValidator::PARAM_TYPE => 'boolean',
 			]
 		];
-		
+
 		$fallbackKey = self::API_HELP_PREFIX . self::CUSTOM_PARAM_PREFIX;
-		
+
 		for ($i = 0; $i < $wgCustomLogsMaxCustomParams; $i++) {
 			$paramName = self::getApiParamFromIndex($i);
 			$specificKey = self::API_HELP_PREFIX . $paramName;
@@ -100,10 +102,10 @@ class ApiCustomLogWriter extends ApiBase {
 				ApiBase::PARAM_HELP_MSG => $message
 			];
 		}
-		
+
 		return $paramList;
 	}
-	
+
 	public function needsToken() {
 		return 'csrf';
 	}
