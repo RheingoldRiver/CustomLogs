@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"magiczocker10"
+		]
+	},
+	"customlogs-desc": "Ermöglicht die Erstellung und Anpassung von Logbüchern über den MediaWiki-Namensraum, die über die API beschrieben werden können",
+	"customlogs-nomessage": "Benutzerdefiniertes Logbuch %NAME% von Seite $3, protokolliert von $1. (keine Logbuch-Spezifische Meldung gefunden)"
+}
