@@ -83,8 +83,8 @@ class ApiCustomLogWriter extends ApiBase {
 				ParamValidator::PARAM_TYPE => 'integer'
 			],
 			'summary' => [
-                                ParamValidator::PARAM_DEFAULT => ''
-                        ],
+				ParamValidator::PARAM_DEFAULT => ''
+			],
 			'tags' => [
 				ParamValidator::PARAM_TYPE => 'tags',
 				ParamValidator::PARAM_ISMULTI => true,
